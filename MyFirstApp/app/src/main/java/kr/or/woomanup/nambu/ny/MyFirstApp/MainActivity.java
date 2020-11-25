@@ -42,10 +42,8 @@ public class MainActivity extends AppCompatActivity {
         Button button = findViewById(R.id.button12);
         button.setText("내가 지정한 버튼");
 
-
         Button button2 = findViewById(R.id.button13);
         button2.setText("두번째로 지정한 버튼");
-
 
 //        button.setTextAlignment(View.TEXT_ALIGNMENT_CENTER); // 사실 버튼 같은 것은 내용이 잘 바뀌지 않으니 그냥 layout 서 처리해도 됨
 
@@ -55,14 +53,29 @@ public class MainActivity extends AppCompatActivity {
         BtnOnClickListner2 listner2 = new BtnOnClickListner2();
         button2.setOnClickListener(listner2);
 
+
+        Button btnthird = findViewById(R.id.btn_third);
+        btnthird.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView.setText("버튼3이 눌려졌습니다");
+            }
+        }); // 좀 더 간결한 방식.
+        
     }
+
+    // 가장 간단한 방식
+    public void onClick (View view){ // layout\activity_main.xml의 Attributes의 Commom Atribute의 onClick 방식을 넣어줍니다,
+        textView.setText("가장 간단한 버튼 누루기 방식입니다.");
+    }
+    // 중요한 것은 View 형이 view 형이여야 합니다. ex. int 안 됨
 
     class BtnOnClickListener implements View.OnClickListener {
         //Generate > Implements ..
         @Override
         public void onClick(View v) {
             l = 10; // inner class 로 l에 접근 가능.
-            textView.setText("첫번째 버튼이 눌러졌습니다.");
+            textView.setText("첫번째 버튼이 눌려졌습니다.");
 
         }
 }
