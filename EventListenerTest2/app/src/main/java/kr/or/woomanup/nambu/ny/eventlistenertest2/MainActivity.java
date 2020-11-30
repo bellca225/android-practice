@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.SearchView;
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     ToggleButton toggleButton;
     SearchView searchBar;
     SeekBar seekBar;
+
+    Button button1;
+    Button button2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +109,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        button1 = findViewById(R.id.button1);
+        button2 = findViewById(R.id.button2);
 
+        BtnClickListener listener = new BtnClickListener(); //하나로 여러개 관리..
+
+        button1.setOnClickListener(listener);
+        button2.setOnClickListener(listener);
 
 
 
@@ -128,6 +138,22 @@ public class MainActivity extends AppCompatActivity {
         });
         /////////////////////////////////////////////////////////////////
 
+
+
+    }
+
+    class BtnClickListener implements View.OnClickListener{ // inner class
+        @Override
+        public void onClick(View v) {
+            int id = v.getId(); // 넘어온 변수값 => 여기서는 button1의 아이디를 가리킴
+            if (id == R.id.button1){
+                hello.setText("Hi! I'm Button1");
+            }else if(id == R.id.button2){
+                hello.setText("Hi! I'm Button2");
+            }else{
+
+            }
+        }
     }
 
 
