@@ -126,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 // SeekBar seekBar = 이벤트 발생 시킨 것, int progress = 진행된 숫자, boolean fromUser = 내가 초기값 지정하기 +  alpha (ex. 중앙에 바를 두게 함)
 //                hello.setText("현재 값은 "+progress+"입니다"); // progress 값 찍어주기
+
+
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {

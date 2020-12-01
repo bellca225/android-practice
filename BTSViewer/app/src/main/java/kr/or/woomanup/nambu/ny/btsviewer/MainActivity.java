@@ -1,7 +1,9 @@
 package kr.or.woomanup.nambu.ny.btsviewer;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,64 +14,50 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     ImageView imageView;
-
     Button btnNext;
     Button btnPrev;
     TextView txtName, txtNum;
+    SeekBar seekBar;
 
+    int index = 0;
 
     int[] images = {R.drawable.bts1, R.drawable.bts2,R.drawable.bts3, R.drawable.bts4,R.drawable.bts5, R.drawable.bts6,R.drawable.bts7};
     String[] names ={"RM","진","슈가","제이홉","지민","뷔","정국"};
 
-    int index = 0;
-
-    SeekBar seekBar;
-
-
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//    참조 전역 변수값들 모음
+        initUI();
+//        초기값 설정
+        initBtnListener();
 
-        imageView = findViewById(R.id.imageView);
+        display();
 
-        btnNext = findViewById(R.id.btn_Next);
-        btnPrev = findViewById(R.id.btn_Prev);
-
-        BtnOnClickListener listener = new BtnOnClickListener();
-
-        btnNext.setOnClickListener(listener);
-        btnPrev.setOnClickListener(listener);
-        btnPrev.setEnabled(false);
-
-        txtName =findViewById(R.id.txtName);
-        txtNum=findViewById(R.id.txtNum);
-
-        seekBar = findViewById(R.id.seekBar);
-
-
-
-        int max = names.length;
-        seekBar.setMin(0);
+        int max = names.length-1;
+//        seekBar.setMin(0); 필요없음
         seekBar.setMax(max);
-
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                index = progress;
+                btnPrev.setEnabled(true);
+                btnNext.setEnabled(true);
 
-                index++;
+                if(index<=0){
+                    btnPrev.setEnabled(false)
+                ;}
+                if(index>=images.length-1){
+                    btnNext.setEnabled(false);
+                }
                 display();
-
-
-
             }
-
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             @Override
@@ -85,6 +73,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void initBtnListener() {
+        BtnOnClickListener listener = new BtnOnClickListener();
+        btnNext.setOnClickListener(listener);
+        btnPrev.setOnClickListener(listener);
+        btnPrev.setEnabled(false);
+    }
+
+    private void initUI() {
+        imageView = findViewById(R.id.imageView);
+        btnNext = findViewById(R.id.btn_Next);
+        btnPrev = findViewById(R.id.btn_Prev);
+        txtName =findViewById(R.id.txtName);
+        txtNum=findViewById(R.id.txtNum);
+        seekBar = findViewById(R.id.seekBar);
+    }
+
     private void display() {
 
         imageView.setImageResource(images[index]);
@@ -92,31 +96,35 @@ public class MainActivity extends AppCompatActivity {
         txtNum.setText((index+1) +"/"+ names.length);
     }
 
-
     class BtnOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            btnPrev.setEnabled(true);
-            btnNext.setEnabled(true);
+
 
             int id = v.getId();
             if (id == R.id.btn_Prev) {
                 index--;
-                if (index <= 0) {
-                    btnPrev.setEnabled(false);
-                }
             }else if(id == R.id.btn_Next) {
                     index++;
-                    if (index >= images.length - 1) {
-                        btnNext.setEnabled(false);
-                    }
                 }// if end
-
-            display();
-
+            setIndex(index);
         } //onClick
     } // BtnOnClickListener
 
 
+    void setIndex(int i){
+
+        btnPrev.setEnabled(true);
+        btnNext.setEnabled(true);
+
+        if (i <= 0) {
+            btnPrev.setEnabled(false);
+        }
+        if (i >= images.length - 1) {
+            btnNext.setEnabled(false);
+        }
+        seekBar.setProgress(i);
+        display();
+    }
 
 } // all end
