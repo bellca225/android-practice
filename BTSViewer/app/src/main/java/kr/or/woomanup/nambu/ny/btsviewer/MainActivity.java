@@ -14,13 +14,11 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     ImageView imageView;
-    Button btnNext;
-    Button btnPrev;
+    Button btnNext, btnPrev;
     TextView txtName, txtNum;
     SeekBar seekBar;
 
     int index = 0;
-
     int[] images = {R.drawable.bts1, R.drawable.bts2,R.drawable.bts3, R.drawable.bts4,R.drawable.bts5, R.drawable.bts6,R.drawable.bts7};
     String[] names ={"RM","진","슈가","제이홉","지민","뷔","정국"};
 
@@ -99,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
     class BtnOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-
 
             int id = v.getId();
             if (id == R.id.btn_Prev) {
