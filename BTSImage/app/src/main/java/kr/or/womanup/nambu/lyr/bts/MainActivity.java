@@ -31,10 +31,13 @@ public class MainActivity extends AppCompatActivity {
          list = new ArrayList<>();
 
         for(int i=0;i<bts.length;i++){
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("nick", bts[i]);
+            HashMap<String, Object> map = new HashMap<>(); // Obj -> 이미지도 들어가야 하기에 숫자와 문자가 들어가는 Obj로 설정
+            map.put("nick", bts[i]); //HashMap의 특징 : 사전처럼 데이터를 관리, key(label),value => "nick",bts[i]
+            // map.get("나이"); // 나이에 해당하는 숫자가 나온다.
+
             map.put("name", names[i]);
             map.put("image", ids[i]);
+
             list.add(map);
         }
 

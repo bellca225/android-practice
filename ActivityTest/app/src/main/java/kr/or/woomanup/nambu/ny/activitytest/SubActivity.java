@@ -42,7 +42,7 @@ public class SubActivity extends AppCompatActivity {
                 String resultText = editText.getText().toString();
                 intent1.putExtra("text",resultText);
                 setResult(Activity.RESULT_OK,intent1); // 정상적으로 들어갔다는 뜻
-                finish();
+                finish();// 본인 Activity가 닫힘
             }
         });
     }

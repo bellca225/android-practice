@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     // 위치가 중요! 오버라이드에서 불러옴
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { //data -> intent
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode==101){
