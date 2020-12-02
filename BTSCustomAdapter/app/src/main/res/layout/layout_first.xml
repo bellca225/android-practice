@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView_item"
         android:layout_width="95dp"
         android:layout_height="141dp"
         android:layout_marginStart="16dp"
@@ -26,7 +26,7 @@
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#1161AD"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imageView_item"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#2B2B2B"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imageView_item"
         app:layout_constraintTop_toBottomOf="@+id/txt_nick_item" />
 
     <ImageView
