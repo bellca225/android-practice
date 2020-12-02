@@ -23,12 +23,9 @@ public class ActivityDetail extends AppCompatActivity {
 
         Intent intent = getIntent();
         BTSJava member = (BTSJava) intent.getSerializableExtra("member"); // 실제로 BTS 타입임.
-
         txtDel_main.setText(member.nick);
         txtDel_sub.setText(member.name);
         imageView_Del.setImageResource(member.image);
-
-
 
         finish();
 

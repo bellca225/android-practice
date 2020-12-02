@@ -40,7 +40,7 @@ public class BTSAdapter extends BaseAdapter { //상속 받아서 써야 함.
     @Override
     public Object getItem(int position) { //
         return members.get(position);
-    } // 우리가 많이 씀
+    }
 
     @Override
     public long getItemId(int position) { // id 가져와라
@@ -65,7 +65,6 @@ public class BTSAdapter extends BaseAdapter { //상속 받아서 써야 함.
 //        int image = (Integer)member.get("image");
 
         //        getView 는 재활용하는 장소, 이 때 아무것도 로딩되지 않았다면(null) 구현(implement)한다
-
         if(convertView == null){
 //            재활용할 게 없는 상태에서는 아래처럼 구현해준다. 이 코드를 쓰면 더 효율적으로 진행
             LayoutInflater inflater = LayoutInflater.from(context); // LayoutInflater 가 실실적으로 xml 을 구현해 줌
