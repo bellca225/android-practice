@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         String[] from = {"nick", "name", "image"};
         int[] to = {R.id.txt_nick_item, R.id.txt_name_item, R.id.imageView_item};
+
         SimpleAdapter adapter =
                 new SimpleAdapter(this, list, R.layout.layout_item, from, to);
         listView.setAdapter(adapter);
